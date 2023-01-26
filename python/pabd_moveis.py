@@ -36,3 +36,43 @@ if r == 1:
 
             cursor.execute(f"INSERT INTO filme VALUES ('{codigo}', '{titulo}', '{genero}')")
             meubanco.commit()
+
+        elif r == 2:
+
+        elif r == 3:
+
+        else:
+            print('Comando inválido...')
+    
+    elif r == 2:
+        print('1 - Cadastrar')
+        print('2 - Alterar')
+        print('3 - Voltar')
+        r = int(input('Digite a opção: '))
+
+        if r == 1:
+            print('Digite o cpf: ')
+            print('Digite o nome: ')
+            print('Digite a função: ')
+            print('Digite o valor do salário: ')
+            print('Digite o telefone: ')
+            print('Digite o email: ')
+
+            cursor.execute(f"INSERT INTO filme VALUES ('{codigo}', '{titulo}', '{genero}')")
+            meubanco.commit()
+
+        elif r == 2:
+
+        elif r == 3:
+
+    elif r == 3:
+        print('1 - Lista de vendas por funcionário')
+        print('2 - Lista de vendas por data')
+        print('3 - Lista de vendas por produto')
+        r = int(input('Digite a opção: '))
+
+        if r == 1:
+            cursor.execute("SELECT qntd_venda, funcionario.nome FROM venda, funcionario")
+
+            for linha in cursor:
+                print(linha)

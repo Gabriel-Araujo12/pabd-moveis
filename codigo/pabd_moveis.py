@@ -12,8 +12,7 @@ cursor = meubanco.cursor()
 while(True):
 
     print('1 - Entrar como administrador')
-    print('2 - Entrar como vendedor')
-    print('3 - Sair')
+    print('2 - Sair')
     r = int(input('Digite a opção: '))
 
     if r == 1:
@@ -102,8 +101,13 @@ while(True):
                     cursor.execute(f"UPDATE produto SET cnpj_fornecedor ='{novo}' WHERE codigo = '{codigo}'")
                     meubanco.commit()
 
+            elif r == 3:
+                print('Voltando...')
+
             else:
                 print('Comando inválido...')
+
+##########################FUNCIONÁRIO#################################
     
         elif r == 2:
             print('1 - Cadastrar')
@@ -123,47 +127,67 @@ while(True):
                 meubanco.commit()
 
             elif r == 2:
+                print('Qual elemento você quer modificar?')
+                print('1 - CPF')
+                print('2 - Nome')
+                print('3 - Função')
+                print('4 - Salário')
+                print('5 - Telefone')
+                print('6 - Email')
+                r = int(input('Digite a opção: '))
+
                 if r == 1:
                     codigo = str(input('Digite o cpf do funcionário que será alterado: '))
                     novo = str(input('Digite o novo cpf: '))
 
-                    cursor.execute(f"UPDATE produto SET cpf ='{novo}' WHERE cpf = '{codigo}'")
+                    cursor.execute(f"UPDATE funcionario SET cpf ='{novo}' WHERE cpf = '{codigo}'")
                     meubanco.commit()
 
                 elif r == 2:
-                    codigo = str(input('Digite o código do produto que será alterado: '))
-                    novo = str(input('Digite o novo nome do funcionário: '))
+                    codigo = str(input('Digite o cpf do funcionário que será alterado: '))
+                    novo = str(input('Digite o novo nome: '))
 
-                    cursor.execute(f"UPDATE produto SET nome ='{novo}' WHERE cpf = '{codigo}'")
+                    cursor.execute(f"UPDATE funcionario SET nome ='{novo}' WHERE cpf = '{codigo}'")
                     meubanco.commit()
-
+                    
                 elif r == 3:
-                    codigo = str(input('Digite o código do produto que será alterado: '))
-                    novo = str(input('Digite o novo tipo do produto: '))
+                    codigo = str(input('Digite o cpf do funcionário que será alterado: '))
+                    novo = str(input('Digite a nova função: '))
 
-                    cursor.execute(f"UPDATE produto SET tipo ='{novo}' WHERE codigo = '{codigo}'")
+                    cursor.execute(f"UPDATE funcionario SET funcao ='{novo}' WHERE cpf = '{codigo}'")
                     meubanco.commit()
 
                 elif r == 4:
-                    codigo = str(input('Digite o código do produto que será alterado: '))
-                    novo = str(input('Digite a nova descrição do produto: '))
+                    codigo = str(input('Digite o cpf do funcionário que será alterado: '))
+                    novo = str(input('Digite o novo salário: '))
 
-                    cursor.execute(f"UPDATE produto SET descricao ='{novo}' WHERE codigo = '{codigo}'")
+                    cursor.execute(f"UPDATE funcionario SET salario ='{novo}' WHERE cpf = '{codigo}'")
                     meubanco.commit()
 
                 elif r == 5:
-                    codigo = str(input('Digite o código do produto que será alterado: '))
-                    novo = str(input('Digite o novo valor do produto: '))
+                    codigo = str(input('Digite o cpf do funcionário que será alterado: '))
+                    novo = str(input('Digite o novo telefone: '))
 
-                    cursor.execute(f"UPDATE produto SET valor ='{novo}' WHERE codigo = '{codigo}'")
+                    cursor.execute(f"UPDATE funcionario SET telefone ='{novo}' WHERE cpf = '{codigo}'")
                     meubanco.commit()
 
                 elif r == 6:
-                    codigo = str(input('Digite o código do produto que será alterado: '))
-                    novo = str(input('Digite a nova quantidade do produto: '))
+                    codigo = str(input('Digite o cpf do funcionário que será alterado: '))
+                    novo = str(input('Digite o novo email: '))
 
-                    cursor.execute(f"UPDATE produto SET quantidade ='{novo}' WHERE codigo = '{codigo}'")
+                    cursor.execute(f"UPDATE funcionario SET email ='{novo}' WHERE cpf = '{codigo}'")
                     meubanco.commit()
+
+                else:
+                    print('Comando inválido')
+            
+            elif r == 3:
+                print('Voltando...')
+
+            else:
+                print('Comando inválido')
+
+##########################RELATÓRIO#################################
 
         elif r == 3:
             print('1 - Lista de vendas por funcionário')
@@ -172,10 +196,25 @@ while(True):
             r = int(input('Digite a opção: '))
 
             if r == 1:
-                cursor.execute("SELECT qntd_venda, funcionario.nome FROM venda, funcionario")
+                cursor.execute("SELECT qntd_venda, funcionario.nome FROM venda, funcionario WHERE funcionario.cpf = venda.cpf_funcionario")
 
                 for linha in cursor:
                     print(linha)
 
-    elif r == 3:
+            elif r == 2:
+                cursor.execute("SELECT qntd_venda, data FROM venda")
+
+                for linha in cursor:
+                    print(linha)
+
+            elif r == 3:
+                cursor.execute("SELECT qntd_venda, produto.nome FROM venda, produto WHERE venda.cod_produto = produto.codigo")
+
+                for linha in cursor:
+                    print(linha)
+
+            else:
+                print('Comando inválido')
+
+    elif r == 2:
         break

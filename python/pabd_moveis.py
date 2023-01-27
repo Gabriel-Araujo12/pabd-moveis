@@ -13,6 +13,7 @@ while(True):
 
     print('1 - Entrar como administrador')
     print('2 - Entrar como vendedor')
+    print('3 - Sair')
     r = int(input('Digite a opção: '))
 
     if r == 1:
@@ -20,6 +21,8 @@ while(True):
         print('2 - Funcionários')
         print('3 - Relatórios')
         r = int(input('Digite a opção: '))
+
+################ADMINISTRAÇÃO DE PRODUTOS#################
 
         if r == 1:
             print('1 - Cadastrar')
@@ -38,6 +41,66 @@ while(True):
 
                 cursor.execute(f"INSERT INTO produto VALUES ('{codigo}', '{nome}', '{tipo}', '{descricao}', '{valor}', '{qntd}', '{cnpj}')")
                 meubanco.commit()
+
+            elif r == 2:
+                print('Qual elemento você quer modificar?')
+                print('1 - Código')
+                print('2 - Nome')
+                print('3 - Tipo')
+                print('4 - Descrição')
+                print('5 - Valor')
+                print('6 - Quantidade')
+                print('7 - CNPJ do fornecedor')
+                r = int(input('Digite a opção: '))
+
+                if r == 1:
+                    codigo = str(input('Digite o código do produto que será alterado: '))
+                    novo = str(input('Digite o novo código: '))
+
+                    cursor.execute(f"UPDATE produto SET codigo ='{novo}' WHERE codigo = '{codigo}'")
+                    meubanco.commit()
+
+                elif r == 2:
+                    codigo = str(input('Digite o código do produto que será alterado: '))
+                    novo = str(input('Digite o novo nome do produto: '))
+
+                    cursor.execute(f"UPDATE produto SET nome ='{novo}' WHERE codigo = '{codigo}'")
+                    meubanco.commit()
+
+                elif r == 3:
+                    codigo = str(input('Digite o código do produto que será alterado: '))
+                    novo = str(input('Digite o novo tipo do produto: '))
+
+                    cursor.execute(f"UPDATE produto SET tipo ='{novo}' WHERE codigo = '{codigo}'")
+                    meubanco.commit()
+
+                elif r == 4:
+                    codigo = str(input('Digite o código do produto que será alterado: '))
+                    novo = str(input('Digite a nova descrição do produto: '))
+
+                    cursor.execute(f"UPDATE produto SET descricao ='{novo}' WHERE codigo = '{codigo}'")
+                    meubanco.commit()
+
+                elif r == 5:
+                    codigo = str(input('Digite o código do produto que será alterado: '))
+                    novo = str(input('Digite o novo valor do produto: '))
+
+                    cursor.execute(f"UPDATE produto SET valor ='{novo}' WHERE codigo = '{codigo}'")
+                    meubanco.commit()
+
+                elif r == 6:
+                    codigo = str(input('Digite o código do produto que será alterado: '))
+                    novo = str(input('Digite a nova quantidade do produto: '))
+
+                    cursor.execute(f"UPDATE produto SET quantidade ='{novo}' WHERE codigo = '{codigo}'")
+                    meubanco.commit()
+
+                elif r == 7:
+                    codigo = str(input('Digite o código do produto que será alterado: '))
+                    novo = str(input('Digite o novo CNPJ do fornecedor do produto: '))
+
+                    cursor.execute(f"UPDATE produto SET cnpj_fornecedor ='{novo}' WHERE codigo = '{codigo}'")
+                    meubanco.commit()
 
             else:
                 print('Comando inválido...')
@@ -59,6 +122,49 @@ while(True):
                 cursor.execute(f"INSERT INTO funcionario VALUES ('{cpf}', '{nome}', '{funcao}', '{salario}', '{telefone}', '{email}')")
                 meubanco.commit()
 
+            elif r == 2:
+                if r == 1:
+                    codigo = str(input('Digite o cpf do funcionário que será alterado: '))
+                    novo = str(input('Digite o novo cpf: '))
+
+                    cursor.execute(f"UPDATE produto SET cpf ='{novo}' WHERE cpf = '{codigo}'")
+                    meubanco.commit()
+
+                elif r == 2:
+                    codigo = str(input('Digite o código do produto que será alterado: '))
+                    novo = str(input('Digite o novo nome do funcionário: '))
+
+                    cursor.execute(f"UPDATE produto SET nome ='{novo}' WHERE cpf = '{codigo}'")
+                    meubanco.commit()
+
+                elif r == 3:
+                    codigo = str(input('Digite o código do produto que será alterado: '))
+                    novo = str(input('Digite o novo tipo do produto: '))
+
+                    cursor.execute(f"UPDATE produto SET tipo ='{novo}' WHERE codigo = '{codigo}'")
+                    meubanco.commit()
+
+                elif r == 4:
+                    codigo = str(input('Digite o código do produto que será alterado: '))
+                    novo = str(input('Digite a nova descrição do produto: '))
+
+                    cursor.execute(f"UPDATE produto SET descricao ='{novo}' WHERE codigo = '{codigo}'")
+                    meubanco.commit()
+
+                elif r == 5:
+                    codigo = str(input('Digite o código do produto que será alterado: '))
+                    novo = str(input('Digite o novo valor do produto: '))
+
+                    cursor.execute(f"UPDATE produto SET valor ='{novo}' WHERE codigo = '{codigo}'")
+                    meubanco.commit()
+
+                elif r == 6:
+                    codigo = str(input('Digite o código do produto que será alterado: '))
+                    novo = str(input('Digite a nova quantidade do produto: '))
+
+                    cursor.execute(f"UPDATE produto SET quantidade ='{novo}' WHERE codigo = '{codigo}'")
+                    meubanco.commit()
+
         elif r == 3:
             print('1 - Lista de vendas por funcionário')
             print('2 - Lista de vendas por data')
@@ -70,3 +176,6 @@ while(True):
 
                 for linha in cursor:
                     print(linha)
+
+    elif r == 3:
+        break

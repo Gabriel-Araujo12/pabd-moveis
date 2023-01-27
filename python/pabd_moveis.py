@@ -22,24 +22,20 @@ if r == 1:
     if r == 1:
         print('1 - Cadastrar')
         print('2 - Alterar')
-        print('3 - Relatórios')
+        print('3 - Voltar')
         r = int(input('Digite a opção: '))
 
         if r == 1:
-            print('Digite o código: ')
-            print('Digite o nome: ')
-            print('Digite o tipo: ')
-            print('Digite a descrição: ')
-            print('Digite o valor: ')
-            print('Digite a quantidade em estoque: ')
-            print('Digite o CNPJ do fornecedor: ')
+            codigo = input(print('Digite o código: '))
+            nome = input(print('Digite o nome: '))
+            tipo = input(print('Digite o tipo: '))
+            descricao = input(print('Digite a descrição: '))
+            valor = input(print('Digite o valor: '))
+            qntd = input(print('Digite a quantidade em estoque: '))
+            cnpj = input(print('Digite o CNPJ do fornecedor: '))
 
-            cursor.execute(f"INSERT INTO filme VALUES ('{codigo}', '{titulo}', '{genero}')")
+            cursor.execute(f"INSERT INTO filme VALUES ('{codigo}', '{nome}', '{tipo}', '{descricao}', '{valor}', '{qntd}', '{cnpj}')")
             meubanco.commit()
-
-        elif r == 2:
-
-        elif r == 3:
 
         else:
             print('Comando inválido...')
@@ -60,10 +56,6 @@ if r == 1:
 
             cursor.execute(f"INSERT INTO filme VALUES ('{codigo}', '{titulo}', '{genero}')")
             meubanco.commit()
-
-        elif r == 2:
-
-        elif r == 3:
 
     elif r == 3:
         print('1 - Lista de vendas por funcionário')

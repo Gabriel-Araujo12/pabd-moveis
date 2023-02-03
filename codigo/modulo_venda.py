@@ -119,11 +119,15 @@ while(True):
 
         elif r == 3:
             c = input('Digite o código do produto a ser vendido: ')
-            q = input('Digite a quantidade do produto a ser vendida: ')
+            q = int(input('Digite a quantidade do produto a ser vendida: '))
 
-            qt = (cursor.execute(f"SELECT qntd_estoque from produto WHERE codigo={c}"))
+            cursor.execute(f"SELECT qntd_estoque from produto WHERE codigo={c}")
+            for linha in cursor:
+                qt = int(linha[0])
 
-            cursor.execute(f"UPDATE produto SET qntd_estoque ='{qt - q}' WHERE codigo = '{c}'")
+            n = qt - q
+
+            cursor.execute(f"UPDATE produto SET qntd_estoque ='{n}' WHERE codigo = '{c}'")
             meubanco.commit()
 
 ##########################RELATÓRIO#################################

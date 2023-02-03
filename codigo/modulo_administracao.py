@@ -2,7 +2,7 @@ import mysql.connector
 
 meubanco = mysql.connector.connect(
     host="localhost",
-    database="crediario_sa",
+    database="pabd_moveis",
     user="root",
     password="labinfo"
 )
@@ -202,7 +202,7 @@ while(True):
                     print(linha)
 
             elif r == 2:
-                cursor.execute("SELECT qntd_venda FROM venda")
+                cursor.execute("SELECT qntd_venda, compra.data FROM venda, compra")
 
                 for linha in cursor:
                     print(linha)

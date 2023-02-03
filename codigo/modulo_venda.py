@@ -58,31 +58,31 @@ while(True):
                         meubanco.commit()
 
                     elif r == 2:
-                        nome = str(input('Digite o nome do cliente que será alterado: '))
+                        cpf = str(input('Digite o cpf do cliente que será alterado: '))
                         novo = str(input('Digite o novo nome do cliente: '))
 
-                        cursor.execute(f"UPDATE produto SET nome ='{novo}' WHERE codigo = '{nome}'")
+                        cursor.execute(f"UPDATE produto SET nome ='{novo}' WHERE cpf = '{cpf}'")
                         meubanco.commit()
 
                     elif r == 3:
-                        endereco = str(input('Digite o endereço do cliente que será alterado: '))
+                        cpf = str(input('Digite o cpf do cliente que será alterado: '))
                         novo = str(input('Digite o novo endereço do cliente: '))
 
-                        cursor.execute(f"UPDATE produto SET tipo ='{novo}' WHERE codigo = '{endereco}'")
+                        cursor.execute(f"UPDATE produto SET endereco ='{novo}' WHERE cpf = '{cpf}'")
                         meubanco.commit()
 
                     elif r == 4:
-                        telefone = str(input('Digite o telefone do cliente que será alterado: '))
+                        cpf = str(input('Digite o cpf do cliente que será alterado: '))
                         novo = str(input('Digite o novo telefone do cliente: '))
 
-                        cursor.execute(f"UPDATE produto SET descricao ='{novo}' WHERE codigo = '{telefone}'")
+                        cursor.execute(f"UPDATE produto SET telefone ='{novo}' WHERE cpf = '{cpf}'")
                         meubanco.commit()
 
                     elif r == 5:
-                        email = str(input('Digite o email do produto que será alterado: '))
+                        cpf = str(input('Digite o cpf do cliente que será alterado: '))
                         novo = str(input('Digite o novo email do cliente: '))
 
-                        cursor.execute(f"UPDATE produto SET valor ='{novo}' WHERE codigo = '{email}'")
+                        cursor.execute(f"UPDATE produto SET email ='{novo}' WHERE cpf = '{cpf}'")
                         meubanco.commit()
 
                 elif r == 3:

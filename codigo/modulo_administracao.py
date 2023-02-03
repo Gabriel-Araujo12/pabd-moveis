@@ -117,11 +117,11 @@ while(True):
 
             if r == 1:
                 cpf = str(input('Digite o cpf: '))
-                nome = str(('Digite o nome: '))
-                funcao = str(('Digite a função: '))
-                salario = str(('Digite o valor do salário: '))
-                telefone = str(('Digite o telefone: '))
-                email = str(('Digite o email: '))
+                nome = str(input('Digite o nome: '))
+                funcao = str(input('Digite a função: '))
+                salario = float(input('Digite o valor do salário: '))
+                telefone = str(input('Digite o telefone: '))
+                email = str(input('Digite o email: '))
 
                 cursor.execute(f"INSERT INTO funcionario VALUES ('{cpf}', '{nome}', '{funcao}', '{salario}', '{telefone}', '{email}')")
                 meubanco.commit()
@@ -137,45 +137,45 @@ while(True):
                 r = int(input('Digite a opção: '))
 
                 if r == 1:
-                    codigo = str(input('Digite o cpf do funcionário que será alterado: '))
+                    cpf = str(input('Digite o cpf do funcionário que será alterado: '))
                     novo = str(input('Digite o novo cpf: '))
 
-                    cursor.execute(f"UPDATE funcionario SET cpf ='{novo}' WHERE cpf = '{codigo}'")
+                    cursor.execute(f"UPDATE funcionario SET cpf ='{novo}' WHERE cpf = '{cpf}'")
                     meubanco.commit()
 
                 elif r == 2:
-                    codigo = str(input('Digite o cpf do funcionário que será alterado: '))
+                    cpf = str(input('Digite o cpf do funcionário que será alterado: '))
                     novo = str(input('Digite o novo nome: '))
 
-                    cursor.execute(f"UPDATE funcionario SET nome ='{novo}' WHERE cpf = '{codigo}'")
+                    cursor.execute(f"UPDATE funcionario SET nome ='{novo}' WHERE cpf = '{cpf}'")
                     meubanco.commit()
                     
                 elif r == 3:
-                    codigo = str(input('Digite o cpf do funcionário que será alterado: '))
+                    cpf = str(input('Digite o cpf do funcionário que será alterado: '))
                     novo = str(input('Digite a nova função: '))
 
-                    cursor.execute(f"UPDATE funcionario SET funcao ='{novo}' WHERE cpf = '{codigo}'")
+                    cursor.execute(f"UPDATE funcionario SET funcao ='{novo}' WHERE cpf = '{cpf}'")
                     meubanco.commit()
 
                 elif r == 4:
-                    codigo = str(input('Digite o cpf do funcionário que será alterado: '))
+                    cpf = str(input('Digite o cpf do funcionário que será alterado: '))
                     novo = str(input('Digite o novo salário: '))
 
-                    cursor.execute(f"UPDATE funcionario SET salario ='{novo}' WHERE cpf = '{codigo}'")
+                    cursor.execute(f"UPDATE funcionario SET salario ='{novo}' WHERE cpf = '{cpf}'")
                     meubanco.commit()
 
                 elif r == 5:
-                    codigo = str(input('Digite o cpf do funcionário que será alterado: '))
+                    cpf = str(input('Digite o cpf do funcionário que será alterado: '))
                     novo = str(input('Digite o novo telefone: '))
 
-                    cursor.execute(f"UPDATE funcionario SET telefone ='{novo}' WHERE cpf = '{codigo}'")
+                    cursor.execute(f"UPDATE funcionario SET telefone ='{novo}' WHERE cpf = '{cpf}'")
                     meubanco.commit()
 
                 elif r == 6:
-                    codigo = str(input('Digite o cpf do funcionário que será alterado: '))
+                    cpf = str(input('Digite o cpf do funcionário que será alterado: '))
                     novo = str(input('Digite o novo email: '))
 
-                    cursor.execute(f"UPDATE funcionario SET email ='{novo}' WHERE cpf = '{codigo}'")
+                    cursor.execute(f"UPDATE funcionario SET email ='{novo}' WHERE cpf = '{cpf}'")
                     meubanco.commit()
 
                 else:
@@ -202,7 +202,7 @@ while(True):
                     print(linha)
 
             elif r == 2:
-                cursor.execute("SELECT qntd_venda, data FROM venda")
+                cursor.execute("SELECT qntd_venda FROM venda")
 
                 for linha in cursor:
                     print(linha)

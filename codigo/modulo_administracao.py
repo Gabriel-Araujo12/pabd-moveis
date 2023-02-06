@@ -91,7 +91,7 @@ while(True):
                     codigo = str(input('Digite o código do produto que será alterado: '))
                     novo = str(input('Digite a nova quantidade do produto: '))
 
-                    cursor.execute(f"UPDATE produto SET quantidade ='{novo}' WHERE codigo = '{codigo}'")
+                    cursor.execute(f"UPDATE produto SET qntd_estoque ='{novo}' WHERE codigo = '{codigo}'")
                     meubanco.commit()
 
                 elif r == 7:

@@ -120,6 +120,18 @@ while(True):
         elif r == 3:
             c = input('Digite o código do produto a ser vendido: ')
             q = int(input('Digite a quantidade do produto a ser vendida: '))
+            cc = int(input('Digite o CPF do cliente: '))
+            cf = int(input('Digite o seu CPF: '))
+            dt = input('Digite a data de hoje (AAAA-MM-DD):')
+
+            cursor.execute(f"INSERT INTO atendimento VALUES ('{cc}', '{cf}', '{dt}')")
+            meubanco.commit()
+
+            cursor.execute(f"INSERT INTO compra VALUES ('{cc}', '{c}', '{dt}')")
+            meubanco.commit()
+
+            cursor.execute(f"INSERT INTO venda VALUES ('{cf}', '{c}', '{q}')")
+            meubanco.commit()
 
             cursor.execute(f"SELECT qntd_estoque from produto WHERE codigo={c}")
             for linha in cursor:
@@ -129,6 +141,8 @@ while(True):
 
             cursor.execute(f"UPDATE produto SET qntd_estoque ='{n}' WHERE codigo = '{c}'")
             meubanco.commit()
+
+            print('Venda Realizada!')
 
 ##########################RELATÓRIO#################################
 
@@ -144,7 +158,15 @@ while(True):
                 cursor.execute(f"SELECT * FROM produto WHERE nome LIKE '%{p}%'")
 
                 for linha in cursor:
-                    print(linha)
+                    cod = linha[0]
+                    nom = linha[1]
+                    tip = linha[2]
+                    des = linha[3]
+                    val = linha[4]
+                    qtd = linha[5]
+                    cnf = linha[6]
+
+                    print(f'------------------------- \n Código: {cod}\n Nome: {nom}\n Tipo: {tip}\n Descrição: {des}\n Valor: R$ {val}\n Estoque: {qtd}\n CNPJ do Fornecedor: {cnf} \n -------------------------')
 
             elif r == 2:
                 cpf = input('Digite o cpf do cliente: ')
@@ -152,7 +174,11 @@ while(True):
                 cursor.execute(f"SELECT cliente.nome, produto.nome, compra.data FROM cliente, compra, produto WHERE cliente.cpf={cpf} and cliente.cpf = cpf_cliente and produto.codigo = compra.codigo_produto")
 
                 for linha in cursor:
-                    print(linha)
+                    cnome = linha[0]
+                    pnome = linha[1]
+                    data = linha[2]
+
+                    print(f'O cliente {cnome} comprou {pnome} na data {data}.')
 
             elif r == 3:
                 print('Voltando...')

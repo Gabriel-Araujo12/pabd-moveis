@@ -38,7 +38,7 @@ CREATE TABLE `cliente` (
 
 LOCK TABLES `cliente` WRITE;
 /*!40000 ALTER TABLE `cliente` DISABLE KEYS */;
-INSERT INTO `cliente` VALUES ('0000','Kelly','Campo Grande','64953728','kelly@gmail.com'),('1111','Ian','Paris','84576539','ian@gmail.com'),('1122','Jailson','Rio Branco','18972845','jailson@gmail.com'),('1144','Rafael','Recife','15474513','rafael@gmail.com'),('2222','Kaua','Mossoró','18537890','kaua@gmail.com'),('3333','Leonardo','Pindamonhangaba','51356522','leo@gmail.com'),('4444','Ronilson','Natal','58714265','ronilson@gmail.com'),('5555','Jussara','Barcelona','89201476','jussara@gmail.com'),('6666','Rita','São Paulo do Potengi','78598742','rita@gmail.com'),('7777','Maria','Jucurutu','31642789','maria@gmail.com'),('8888','Roberto','Macau','01245789','roberto@gmail.com'),('9999','Lucas','Touros','34680247','lucas@gmail.com');
+INSERT INTO `cliente` VALUES ('1111','Ian','Paris','84576539','ian@gmail.com'),('1122','Jailson','Rio Branco','18972845','jailson@gmail.com'),('1144','Rafael','Recife','15474513','rafael@gmail.com'),('1177','Roberta','Pau dos Ferros','16574145','roberta@gmail.com'),('2222','Kaua','Mossoró','18537890','kaua@gmail.com'),('3333','Leonardo','Pindamonhangaba','51356522','leo@gmail.com'),('4444','Miguel','Parnamirim','65197471','miguel@gmail.com'),('5555','Jussara','Barcelona','89201476','jussara@gmail.com'),('6666','Rita','São Paulo do Potengi','78598742','rita@gmail.com'),('7777','Maria','Jucurutu','31642789','maria@gmail.com'),('8888','Roberto','Macau','01245789','roberto@gmail.com'),('9999','Lucas','Touros','34680247','lucas@gmail.com');
 /*!40000 ALTER TABLE `cliente` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -63,7 +63,7 @@ CREATE TABLE `compra` (
   CONSTRAINT `fk_compra_cliente` FOREIGN KEY (`cpf_cliente`) REFERENCES `cliente` (`cpf`),
   CONSTRAINT `fk_compra_funcionario` FOREIGN KEY (`cpf_funcionario`) REFERENCES `funcionario` (`cpf`),
   CONSTRAINT `fk_compra_produto` FOREIGN KEY (`codigo_produto`) REFERENCES `produto` (`codigo`)
-) ENGINE=InnoDB AUTO_INCREMENT=26 DEFAULT CHARSET=utf8mb3;
+) ENGINE=InnoDB AUTO_INCREMENT=27 DEFAULT CHARSET=utf8mb3;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -72,7 +72,7 @@ CREATE TABLE `compra` (
 
 LOCK TABLES `compra` WRITE;
 /*!40000 ALTER TABLE `compra` DISABLE KEYS */;
-INSERT INTO `compra` VALUES (1,'1111','22','444','2021-01-09',1),(2,'1111','55','666','2021-01-09',1),(3,'1111','99','666','2021-02-01',2),(4,'2222','77','111','2021-02-09',2),(5,'2222','11','111','2021-02-09',3),(6,'3333','00','333','2021-02-25',1),(7,'4444','99','888','2021-03-05',3),(8,'5555','66','666','2021-03-05',4),(9,'6666','11','111','2021-03-15',2),(10,'7777','33','111','2021-03-20',1),(11,'8888','44','333','2021-03-20',1),(12,'9999','44','888','2021-03-20',2),(13,'0000','77','888','2021-03-30',2),(14,'8888','88','444','2021-04-01',3),(15,'1111','88','666','2021-04-01',3),(16,'2222','66','333','2021-04-01',4),(18,'1111','11','111','2021-06-07',2),(19,'6666','77','333','2021-06-21',2),(22,'1122','33','666','2021-07-02',1),(23,'5555','33','333','2021-07-05',1),(24,'1122','33','333','2021-07-11',1),(25,'1122','33','333','2021-07-12',1);
+INSERT INTO `compra` VALUES (1,'1111','22','444','2021-01-09',1),(2,'1111','55','666','2021-01-09',1),(3,'1111','99','666','2021-02-01',2),(4,'2222','77','111','2021-02-09',2),(5,'2222','11','111','2021-02-09',3),(6,'3333','00','333','2021-02-25',1),(7,'4444','99','888','2021-03-05',3),(8,'5555','66','666','2021-03-05',4),(9,'6666','11','111','2021-03-15',2),(10,'7777','33','111','2021-03-20',1),(11,'8888','44','333','2021-03-20',1),(12,'9999','44','888','2021-03-20',2),(14,'8888','88','444','2021-04-01',3),(15,'1111','88','666','2021-04-01',3),(16,'2222','66','333','2021-04-01',4),(18,'1111','11','111','2021-06-07',2),(19,'6666','77','333','2021-06-21',2),(22,'1122','33','666','2021-07-02',1),(23,'5555','33','333','2021-07-05',1),(24,'1122','33','333','2021-07-11',1),(25,'1122','33','333','2021-07-12',1),(26,'6666','66','888','2021-11-12',2);
 /*!40000 ALTER TABLE `compra` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -128,7 +128,7 @@ CREATE TABLE `funcionario` (
 
 LOCK TABLES `funcionario` WRITE;
 /*!40000 ALTER TABLE `funcionario` DISABLE KEYS */;
-INSERT INTO `funcionario` VALUES ('000','Rebecca','Caixa',1200,'13461952','rebecca@gmail.com'),('111','João','Vendedor',1600,'86935648','joao@gmail.com'),('222','Bruno','Caixa',1200,'78694758','bruno@gmail.com'),('333','José','Vendedor',1600,'84638375','jose@gmail.com'),('444','Felipe','Vendedor',1600,'34215798','felipe@gmail.com'),('555','Gabriel','Gerente',3000,'15654891','gabriel@gmail.com'),('666','Guilherme','Vendedor',1600,'35798565','guilherme@gmail.com'),('777','Pedro','Caixa',1200,'34619163','pedro@gmail.com'),('888','Kamilly','Vendedor',1600,'34619344','kamilly@gmail.com'),('999','Clarissi','Caixa',1200,'98723131','clarissi@gmail.com');
+INSERT INTO `funcionario` VALUES ('000','Rebecca','Caixa',1200,'13461952','rebecca@gmail.com'),('010','Klara','Caixa',1200,'17814847','klara@gmail.com'),('111','João','Vendedor',1600,'86935648','joao@gmail.com'),('222','Bruno','Caixa',1200,'78694758','bruno@gmail.com'),('333','José','Vendedor',1600,'84638375','jose@gmail.com'),('444','Felipe','Vendedor',1600,'34215798','felipe@gmail.com'),('555','Gabriel','Gerente',3000,'15654891','gabriel@gmail.com'),('666','Guilherme','Vendedor',1600,'35798565','guilherme@gmail.com'),('777','Pedro','Caixa',1200,'34619163','pedro@gmail.com'),('888','Kamilly','Vendedor',1600,'34619344','kamilly@gmail.com'),('999','Clarissi','Caixa',1200,'98723131','clarissi@gmail.com');
 /*!40000 ALTER TABLE `funcionario` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -159,7 +159,7 @@ CREATE TABLE `produto` (
 
 LOCK TABLES `produto` WRITE;
 /*!40000 ALTER TABLE `produto` DISABLE KEYS */;
-INSERT INTO `produto` VALUES ('00','Painel Lexus','Sala','Painel em MDF e com suporte para TV de 70\'\'.',2000,30,'55555'),('11','Roupeiro Paris','Quarto','Roupeiro com 6 portas e MDF',2000,48,'11111'),('22','Armário Cozinha Grécia','Cozinha','Armário com 3 gavetas e MDF',2500,45,'11111'),('33','Rack Florença','Sala','Rack com rodinhas e MDP',1500,46,'22222'),('44','Painel Hades','Sala','Painel com suporte para TV de 60\" e MDP',600,25,'22222'),('55','Microondas Arizona','Cozinha','Microondas com 40 litros de capacidade, preto',900,35,'33333'),('66','Geladeira Ragnar','Cozinha','Geladeira com 400 litros de capacidade, Inox com duas portas',3800,40,'33333'),('77','Colchão Master II','Quarto','Colchão de casal com molas.',1500,48,'44444'),('88','Colchão King IV','Quarto','Colchão king size, reforço lateral e com molas ensacadas.',3500,30,'44444'),('99','Home Theater Sibéria','Sala','Home Theater em MDF, com plateleiras de vidro e suporte para TV de até 80\'\'.',2800,35,'55555');
+INSERT INTO `produto` VALUES ('00','Painel Lexus','Sala','Painel em MDF e com suporte para TV de 70\'\'.',2000,30,'55555'),('11','Roupeiro Paris','Quarto','Roupeiro com 6 portas e MDF',2000,48,'11111'),('12','Painel Ares','Sala','Painel em MDP e com suporte para TV de 50\"',900,40,'22222'),('22','Armário Cozinha Grécia','Cozinha','Armário com 3 gavetas e MDF',2500,45,'11111'),('33','Rack Florença','Sala','Rack com rodinhas e MDP',1500,46,'22222'),('44','Painel Hades','Sala','Painel com suporte para TV de 60\" e MDP',600,25,'22222'),('55','Microondas Arizona','Cozinha','Microondas com 40 litros de capacidade, preto',900,35,'33333'),('66','Geladeira Ragnar','Cozinha','Geladeira com 400 litros de capacidade, Inox com duas portas',3800,38,'33333'),('77','Colchão Master II','Quarto','Colchão de casal com molas.',1500,48,'44444'),('88','Colchão King IV','Quarto','Colchão king size, reforço lateral e com molas ensacadas.',3500,30,'44444'),('99','Home Theater Sibéria','Sala','Home Theater em MDF, com plateleiras de vidro e suporte para TV de até 80\'\'.',2800,35,'55555');
 /*!40000 ALTER TABLE `produto` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -172,4 +172,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2023-02-09 17:07:42
+-- Dump completed on 2023-02-09 18:47:05

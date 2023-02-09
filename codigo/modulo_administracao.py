@@ -3,8 +3,8 @@ import mysql.connector
 meubanco = mysql.connector.connect(
     host="localhost",
     database="pabd_moveis",
-    user="Gabriel",
-    password="200412"
+    user="root",
+    password="labinfo"
 )
 
 cursor = meubanco.cursor()
@@ -45,65 +45,70 @@ while(True):
 
             elif r == 2:
                 print('Qual elemento você quer modificar?')
-                print('1 - Código')
-                print('2 - Nome')
-                print('3 - Tipo')
-                print('4 - Descrição')
-                print('5 - Valor')
-                print('6 - Quantidade')
-                print('7 - CNPJ do fornecedor')
+                print('1 - Nome')
+                print('2 - Tipo')
+                print('3 - Descrição')
+                print('4 - Valor')
+                print('5 - Quantidade')
+                print('6 - CNPJ do fornecedor')
                 r = int(input('Digite a opção: '))
-
+                
                 if r == 1:
-                    codigo = str(input('Digite o código do produto que será alterado: '))
-                    novo = str(input('Digite o novo código: '))
-
-                    cursor.execute(f"UPDATE produto SET codigo ='{novo}' WHERE codigo = '{codigo}'")
-                    meubanco.commit()
-
-                elif r == 2:
                     codigo = str(input('Digite o código do produto que será alterado: '))
                     novo = str(input('Digite o novo nome do produto: '))
 
                     cursor.execute(f"UPDATE produto SET nome ='{novo}' WHERE codigo = '{codigo}'")
                     meubanco.commit()
 
-                elif r == 3:
+                    print('Dados do produto alterados!')
+
+                elif r == 2:
                     codigo = str(input('Digite o código do produto que será alterado: '))
                     novo = str(input('Digite o novo tipo do produto: '))
 
                     cursor.execute(f"UPDATE produto SET tipo ='{novo}' WHERE codigo = '{codigo}'")
                     meubanco.commit()
 
-                elif r == 4:
+                    print('Dados do produto alterados!')
+
+                elif r == 3:
                     codigo = str(input('Digite o código do produto que será alterado: '))
                     novo = str(input('Digite a nova descrição do produto: '))
 
                     cursor.execute(f"UPDATE produto SET descricao ='{novo}' WHERE codigo = '{codigo}'")
                     meubanco.commit()
 
-                elif r == 5:
+                    print('Dados do produto alterados!')
+
+                elif r == 4:
                     codigo = str(input('Digite o código do produto que será alterado: '))
                     novo = str(input('Digite o novo valor do produto: '))
 
                     cursor.execute(f"UPDATE produto SET valor ='{novo}' WHERE codigo = '{codigo}'")
                     meubanco.commit()
 
-                elif r == 6:
+                    print('Dados do produto alterados!')
+
+                elif r == 5:
                     codigo = str(input('Digite o código do produto que será alterado: '))
                     novo = str(input('Digite a nova quantidade do produto: '))
 
                     cursor.execute(f"UPDATE produto SET qntd_estoque ='{novo}' WHERE codigo = '{codigo}'")
                     meubanco.commit()
 
-                elif r == 7:
+                    print('Dados do produto alterados!')
+
+                elif r == 6:
                     codigo = str(input('Digite o código do produto que será alterado: '))
                     novo = str(input('Digite o novo CNPJ do fornecedor do produto: '))
 
                     cursor.execute(f"UPDATE produto SET cnpj_fornecedor ='{novo}' WHERE codigo = '{codigo}'")
                     meubanco.commit()
 
-                print('Dados do produto alterados!')
+                    print('Dados do produto alterados!')
+
+                else:
+                    print('Comando inválido')
 
             elif r == 3:
                 print('Voltando...')
@@ -134,24 +139,14 @@ while(True):
 
             elif r == 2:
                 print('Qual elemento você quer modificar?')
-                print('1 - CPF')
-                print('2 - Nome')
-                print('3 - Função')
-                print('4 - Salário')
-                print('5 - Telefone')
-                print('6 - Email')
+                print('1 - Nome')
+                print('2 - Função')
+                print('3 - Salário')
+                print('4 - Telefone')
+                print('5 - Email')
                 r = int(input('Digite a opção: '))
 
                 if r == 1:
-                    cpf = str(input('Digite o cpf do funcionário que será alterado: '))
-                    novo = str(input('Digite o novo cpf: '))
-
-                    cursor.execute(f"UPDATE funcionario SET cpf ='{novo}' WHERE cpf = '{cpf}'")
-                    meubanco.commit()
-
-                    print('Dados do funcionário alterados!')
-
-                elif r == 2:
                     cpf = str(input('Digite o cpf do funcionário que será alterado: '))
                     novo = str(input('Digite o novo nome: '))
 
@@ -160,7 +155,7 @@ while(True):
 
                     print('Dados do funcionário alterados!')
                     
-                elif r == 3:
+                elif r == 2:
                     cpf = str(input('Digite o cpf do funcionário que será alterado: '))
                     novo = str(input('Digite a nova função: '))
 
@@ -169,7 +164,7 @@ while(True):
 
                     print('Dados do funcionário alterados!')
 
-                elif r == 4:
+                elif r == 3:
                     cpf = str(input('Digite o cpf do funcionário que será alterado: '))
                     novo = str(input('Digite o novo salário: '))
 
@@ -178,7 +173,7 @@ while(True):
 
                     print('Dados do funcionário alterados!')
 
-                elif r == 5:
+                elif r == 4:
                     cpf = str(input('Digite o cpf do funcionário que será alterado: '))
                     novo = str(input('Digite o novo telefone: '))
 
@@ -187,7 +182,7 @@ while(True):
 
                     print('Dados do funcionário alterados!')
 
-                elif r == 6:
+                elif r == 5:
                     cpf = str(input('Digite o cpf do funcionário que será alterado: '))
                     novo = str(input('Digite o novo email: '))
 

@@ -3,8 +3,8 @@ import mysql.connector
 meubanco = mysql.connector.connect(
     host="localhost",
     database="pabd_moveis",
-    user="root",
-    password="labinfo"
+    user="Gabriel",
+    password="200412"
 )
 
 cursor = meubanco.cursor()
@@ -16,16 +16,11 @@ for linha in cursor:
 
 while(True):
 
-    print('1 - Entrar como funcionário')
-    print('2 - Sair')
-    r = int(input('Digite a opção: '))
+    CPF = input("Digite seu cpf: ")
 
-    if r == 1:
-        CPF = input("Digite seu cpf: ")
+    cursor.execute("SELECT cpf FROM funcionario")
 
-        cursor.execute("SELECT cpf FROM funcionario")
-
-        for linha in cursor:
+    for linha in cursor:
             
             if CPF == linha[0]:
                 print('1 - Clientes')

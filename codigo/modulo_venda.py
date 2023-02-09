@@ -3,8 +3,8 @@ import mysql.connector
 meubanco = mysql.connector.connect(
     host="localhost",
     database="pabd_moveis",
-    user="root",
-    password="labinfo"
+    user="Gabriel",
+    password="200412"
 )
 
 cursor = meubanco.cursor()
@@ -40,6 +40,8 @@ while(True):
                 cursor.execute(f"INSERT INTO cliente VALUES ('{cpf}', '{nome}', '{endereco}', '{telefone}', '{email}')")
                 meubanco.commit()
 
+                print('Cliente cadastrado!')
+
             elif r == 2:
                 print('Qual elemento você quer modificar?')
                 print('1 - CPF')
@@ -56,12 +58,16 @@ while(True):
                     cursor.execute(f"UPDATE cliente SET cpf ='{novo}' WHERE cpf = '{cpf}'")
                     meubanco.commit()
 
+                    print('Dados do cliente alterados!')
+
                 elif r == 2:
                     cpf = str(input('Digite o cpf do cliente que será alterado: '))
                     novo = str(input('Digite o novo nome do cliente: '))
 
                     cursor.execute(f"UPDATE cliente SET nome ='{novo}' WHERE cpf = '{cpf}'")
                     meubanco.commit()
+
+                    print('Dados do cliente alterados!')
 
                 elif r == 3:
                     cpf = str(input('Digite o cpf do cliente que será alterado: '))
@@ -70,6 +76,8 @@ while(True):
                     cursor.execute(f"UPDATE cliente SET endereco ='{novo}' WHERE cpf = '{cpf}'")
                     meubanco.commit()
 
+                    print('Dados do cliente alterados!')
+
                 elif r == 4:
                     cpf = str(input('Digite o cpf do cliente que será alterado: '))
                     novo = str(input('Digite o novo telefone do cliente: '))
@@ -77,12 +85,19 @@ while(True):
                     cursor.execute(f"UPDATE cliente SET telefone ='{novo}' WHERE cpf = '{cpf}'")
                     meubanco.commit()
 
+                    print('Dados do cliente alterados!')
+
                 elif r == 5:
                     cpf = str(input('Digite o cpf do cliente que será alterado: '))
                     novo = str(input('Digite o novo email do cliente: '))
 
                     cursor.execute(f"UPDATE cliente SET email ='{novo}' WHERE cpf = '{cpf}'")
                     meubanco.commit()
+
+                    print('Dados do cliente alterados!')
+
+                else:
+                    print('Comando inválido')
 
             elif r == 3:
                 print('Voltando...')
@@ -113,7 +128,13 @@ while(True):
             cursor.execute(f"SELECT codigo, nome, descricao, valor, qntd_estoque FROM produto WHERE tipo='{tipo}'")
 
             for linha in cursor:
-                print(linha)
+                    cod = linha[0]
+                    nom = linha[1]
+                    desc = linha[2]
+                    val = linha[3]
+                    qntd = linha[4]
+
+                    print(f' ------------------------- \n Código: {cod}\n Nome: {nom}\n Descrição: {desc}\n Valor: {val}\n Estoque: {qntd} \n ------------------------- \n')
 
 ##########################REALIZAR VENDA#################################
 
@@ -122,15 +143,9 @@ while(True):
             q = int(input('Digite a quantidade do produto a ser vendida: '))
             cc = int(input('Digite o CPF do cliente: '))
             cf = int(input('Digite o seu CPF: '))
-            dt = input('Digite a data de hoje (AAAA-MM-DD):')
+            dt = input('Digite a data de hoje (AAAA-MM-DD): ')
 
-            cursor.execute(f"INSERT INTO atendimento VALUES ('{cc}', '{cf}', '{dt}')")
-            meubanco.commit()
-
-            cursor.execute(f"INSERT INTO compra VALUES ('{cc}', '{c}', '{dt}')")
-            meubanco.commit()
-
-            cursor.execute(f"INSERT INTO venda VALUES ('{cf}', '{c}', '{q}')")
+            cursor.execute(f"INSERT INTO compra(cpf_cliente, codigo_produto, cpf_funcionario, data, qntd_compra) VALUES ('{cc}', '{c}', '{cf}', '{dt}', '{q}')")
             meubanco.commit()
 
             cursor.execute(f"SELECT qntd_estoque from produto WHERE codigo={c}")
@@ -166,7 +181,7 @@ while(True):
                     qtd = linha[5]
                     cnf = linha[6]
 
-                    print(f'------------------------- \n Código: {cod}\n Nome: {nom}\n Tipo: {tip}\n Descrição: {des}\n Valor: R$ {val}\n Estoque: {qtd}\n CNPJ do Fornecedor: {cnf} \n -------------------------')
+                    print(f' ------------------------- \n Código: {cod}\n Nome: {nom}\n Tipo: {tip}\n Descrição: {des}\n Valor: R$ {val}\n Estoque: {qtd}\n CNPJ do Fornecedor: {cnf} \n ------------------------- \n')
 
             elif r == 2:
                 cpf = input('Digite o cpf do cliente: ')

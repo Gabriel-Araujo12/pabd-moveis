@@ -3,8 +3,8 @@ import mysql.connector
 meubanco = mysql.connector.connect(
     host="localhost",
     database="pabd_moveis",
-    user="root",
-    password="labinfo"
+    user="Gabriel",
+    password="200412"
 )
 
 cursor = meubanco.cursor()
@@ -40,6 +40,8 @@ while(True):
 
                 cursor.execute(f"INSERT INTO produto VALUES ('{codigo}', '{nome}', '{tipo}', '{descricao}', '{valor}', '{qntd}', '{cnpj}')")
                 meubanco.commit()
+
+                print('Produto cadastrado!')
 
             elif r == 2:
                 print('Qual elemento você quer modificar?')
@@ -101,6 +103,8 @@ while(True):
                     cursor.execute(f"UPDATE produto SET cnpj_fornecedor ='{novo}' WHERE codigo = '{codigo}'")
                     meubanco.commit()
 
+                print('Dados do produto alterados!')
+
             elif r == 3:
                 print('Voltando...')
 
@@ -126,6 +130,8 @@ while(True):
                 cursor.execute(f"INSERT INTO funcionario VALUES ('{cpf}', '{nome}', '{funcao}', '{salario}', '{telefone}', '{email}')")
                 meubanco.commit()
 
+                print('Funcionário cadastrado!')
+
             elif r == 2:
                 print('Qual elemento você quer modificar?')
                 print('1 - CPF')
@@ -143,12 +149,16 @@ while(True):
                     cursor.execute(f"UPDATE funcionario SET cpf ='{novo}' WHERE cpf = '{cpf}'")
                     meubanco.commit()
 
+                    print('Dados do funcionário alterados!')
+
                 elif r == 2:
                     cpf = str(input('Digite o cpf do funcionário que será alterado: '))
                     novo = str(input('Digite o novo nome: '))
 
                     cursor.execute(f"UPDATE funcionario SET nome ='{novo}' WHERE cpf = '{cpf}'")
                     meubanco.commit()
+
+                    print('Dados do funcionário alterados!')
                     
                 elif r == 3:
                     cpf = str(input('Digite o cpf do funcionário que será alterado: '))
@@ -157,12 +167,16 @@ while(True):
                     cursor.execute(f"UPDATE funcionario SET funcao ='{novo}' WHERE cpf = '{cpf}'")
                     meubanco.commit()
 
+                    print('Dados do funcionário alterados!')
+
                 elif r == 4:
                     cpf = str(input('Digite o cpf do funcionário que será alterado: '))
                     novo = str(input('Digite o novo salário: '))
 
                     cursor.execute(f"UPDATE funcionario SET salario ='{novo}' WHERE cpf = '{cpf}'")
                     meubanco.commit()
+
+                    print('Dados do funcionário alterados!')
 
                 elif r == 5:
                     cpf = str(input('Digite o cpf do funcionário que será alterado: '))
@@ -171,6 +185,8 @@ while(True):
                     cursor.execute(f"UPDATE funcionario SET telefone ='{novo}' WHERE cpf = '{cpf}'")
                     meubanco.commit()
 
+                    print('Dados do funcionário alterados!')
+
                 elif r == 6:
                     cpf = str(input('Digite o cpf do funcionário que será alterado: '))
                     novo = str(input('Digite o novo email: '))
@@ -178,8 +194,11 @@ while(True):
                     cursor.execute(f"UPDATE funcionario SET email ='{novo}' WHERE cpf = '{cpf}'")
                     meubanco.commit()
 
+                    print('Dados do funcionário alterados!')
+
                 else:
                     print('Comando inválido')
+
             
             elif r == 3:
                 print('Voltando...')
@@ -196,22 +215,36 @@ while(True):
             r = int(input('Digite a opção: '))
 
             if r == 1:
-                cursor.execute("SELECT qntd_venda, funcionario.nome FROM venda, funcionario WHERE funcionario.cpf = venda.cpf_funcionario")
+                cursor.execute("SELECT funcionario.cpf, funcionario.nome, compra.qntd_compra, compra.data FROM compra, funcionario WHERE funcionario.cpf = compra.cpf_funcionario")
 
                 for linha in cursor:
-                    print(linha)
+                    cpf = linha[0]
+                    nom = linha[1]
+                    qntd = linha[2]
+                    data = linha[3]
+
+                    print(f' ------------------------- \n CPF do funcionário: {cpf}\n Nome do funcionário: {nom}\n Quantidade de vendas: {qntd}\n Data da venda: {data}\n ------------------------- \n')
 
             elif r == 2:
-                cursor.execute("SELECT qntd_venda, compra.data FROM venda, compra")
+                cursor.execute("SELECT compra.id, compra.qntd_compra, compra.data FROM compra")
 
                 for linha in cursor:
-                    print(linha)
+                    id = linha[0]
+                    qntd = linha[1]
+                    data = linha[2]
+
+                    print(f' ------------------------- \n ID da venda: {id}\n Quantidade vendida: {qntd}\n Data da venda: {data}\n ------------------------- \n')
 
             elif r == 3:
-                cursor.execute("SELECT qntd_venda, produto.nome FROM venda, produto WHERE venda.cod_produto = produto.codigo")
+                cursor.execute("SELECT produto.codigo, produto.nome, compra.qntd_compra, compra.data FROM compra, produto WHERE compra.codigo_produto = produto.codigo")
 
                 for linha in cursor:
-                    print(linha)
+                    cod = linha[0]
+                    nom = linha[1]
+                    qntd = linha[2]
+                    data = linha[3]
+
+                    print(f' ------------------------- \n Código do produto: {cod}\n Nome do produto: {nom}\n Quantidade vendida: {qntd}\n Data da venda: {data}\n ------------------------- \n')
 
             else:
                 print('Comando inválido')

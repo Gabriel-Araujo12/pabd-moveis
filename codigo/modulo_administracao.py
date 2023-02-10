@@ -32,7 +32,22 @@ while(True):
             if r == 1:
                 codigo = str(input('Digite o código: '))
                 nome = str(input('Digite o nome: '))
-                tipo = str(input('Digite o tipo: '))
+
+                print('1 - Sala')
+                print('2 - Cozinha')
+                print('3 - Quarto')
+                tip = int(input('Selecione o tipo do produto: '))
+
+                if tip == 1:
+                    tipo = 'Sala'
+
+                elif tip == 2:
+                    tipo = 'Cozinha'
+
+                elif tip == 3:
+                    tipo = 'Quarto'
+
+
                 descricao = str(input('Digite a descrição: '))
                 valor = float(input('Digite o valor: '))
                 qntd = int(input('Digite a quantidade em estoque: '))
